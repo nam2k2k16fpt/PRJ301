@@ -7,10 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Admin
- */
+
 public class AccountDao extends DBContext {
 
     public List<Account> getAll() {
@@ -52,6 +49,19 @@ public class AccountDao extends DBContext {
         return null;
     }
 
+    //insert 
+    public void insertAccount(){
+        
+    }
+    //delete
+    public void deleteAccount(){
+        
+    }
+    //update
+    public void updateAccount(){
+        
+    }
+    
     public static void main(String[] args) {
         AccountDao a = new AccountDao();
         List<Account> list = a.getAll();

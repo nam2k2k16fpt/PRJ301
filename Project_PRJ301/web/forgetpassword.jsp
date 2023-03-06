@@ -7,22 +7,31 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-     <head>
+    <head>
         <link rel="stylesheet" href="style_forgotpassword.css"/>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            input[type=text] {
+                width: 90%;
+                padding: 15px;
+                margin: 10px 0 ;
+                border: 1px solid wheat;
+                outline:none;
+            }
+        </style>
     </head>
+
     <body>
         <div class="contrainer">
             <h1>Forgot Password</h1>
             <form action="action">
-                <input type="email" name="emeo" placeholder="Enter valid email" class="form-item">
+                <input type="text"  placeholder="Enter valid username">
                 <button type="submit">Submit </button>
-                
             </form>
             <footer>
-            <p>Back to<a href="login.html"> Login</a></p>
-        </footer>
+                <p>Back to<a href="login.jsp"> Login</a></p>
+            </footer>
         </div>
     </body>
 </html>

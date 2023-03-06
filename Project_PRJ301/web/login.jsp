@@ -42,9 +42,9 @@
                         <button type="submit">Sign In</button>
                     </div>
                     <div class="footer">
-                        <div class="footer-signup">
+<!--                        <div class="footer-signup">
                             <span class="sign"><a href="signup.jsp"> Sign up </a></span>
-                        </div>
+                        </div>-->
                         <div class="footer-psw">
                             <span class="psw"><a href="forgetpassword.jsp">Forgot password?</a></span>
                         </div>
