@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("view/login.jsp").forward(request, response);
     }
 
     @Override
@@ -40,9 +40,9 @@ public class LoginServlet extends HttpServlet {
             AccountDao adb = new AccountDao();
             Account a = adb.checkLogin(user, pass);
             if (a == null) {
-                response.sendRedirect("login.jsp");
+                response.sendRedirect("view/login.jsp");
             } else {
-                response.sendRedirect("newhtml.html");
+                response.sendRedirect("newjsp.jsp");
             }
         }
 

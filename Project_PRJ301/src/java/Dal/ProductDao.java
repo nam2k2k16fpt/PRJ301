@@ -1,6 +1,7 @@
 
 package Dal;
 
+import Model.Category;
 import Model.Product;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,6 +41,50 @@ public class ProductDao extends DBContext {
         return list;
 
     }
+    
+    //select following id
+    public List<Product> getByProductId(String id){
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT p.Product_id,p.Product_name,p.Quantity,p.Unit,p.Status,p.Supplier_id,p.Describe,p.photo,p.Price,p.Created_at,p.Updated_at,p.CategoryID,c.CategoryID,c.CategoryName "
+                + "FROM Product p INNER JOIN Category c ON p.CategoryID = c.CategoryID Where p.Product_id = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                 Product p = new Product();
+                p.setProduct_id(rs.getString("Product_id"));
+                p.setProduct_name(rs.getString("Product_name"));
+                p.setQuantify(rs.getInt("Quantity"));
+                p.setUnit(rs.getString("Unit"));
+                p.setStatus(rs.getString("Status"));
+                p.setSupplier_id(rs.getString("Supplier_id"));
+                p.setDescribe(rs.getString("Describe"));
+                p.setPhoto(rs.getString("photo"));
+                p.setPrice(rs.getFloat("Price"));
+                p.setCreate_at(rs.getDate("Created_at"));
+                p.setUpdated_at(rs.getDate("Updated_at"));
+                p.setCategory_id(rs.getInt("CategoryID"));
+                p.setCate(new Category(rs.getInt("CategoryID"), rs.getString("CategoryName")));
+                list.add(p);
+                return list;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+              return null;
+    }
+    
+    //paging
+        
+   public List<Product> getListByPage(List<Product> list, int start, int end){
+       ArrayList<Product> arr = new ArrayList<>();
+       for (int i = start; i < end; i++) {
+           arr.add(list.get(i));
+       }
+       return arr;
+   }
 
     //insert product
     public void Insertproduct(Product p) {
@@ -81,7 +126,18 @@ public class ProductDao extends DBContext {
 
     //check id
     public Product getCheckIdProduct(String id) {
-
+        String sql = " SELECT * FROM Product WHERE Product_id = ? ";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, id);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                Product p = new Product(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getFloat(9),rs.getDate(10),rs.getDate(11),rs.getInt(12));
+                 return p;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
         return null;
     }
 

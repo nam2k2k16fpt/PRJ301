@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-    <link rel="stylesheet" href="style_signup.css">
+       <link rel="stylesheet" href="weblogin/css/style_signup.css">
 </head>
 
 <body>

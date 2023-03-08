@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="dd.png" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styledashboard.css">
+    <link rel="stylesheet" href="styleproduct.css">
+    <script src="https://kit.fontawesome.com/fe000f9b2a.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body style="background-color: floralwhite;">
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-light" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo
+            </div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index _dashboard.html"> &nbsp;
+                    Dashboard</a>
+                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                    <button class="dropbtn">Product</button>
+                    <div class="dropdown-content">
+                        <a href="product.html">Product List</a>
+                        <a href="addproduct.html">Add Product</a>
+                        <a href="#">Category List</a>
+                        <a href="#">Add Category</a>
+                    </div>
+                </div>
+
+                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                    <button class="dropbtn">Orders</button>
+                    <div class="dropdown-content">
+                        <a href="#">Order List</a>
+                        <a href="#">Add Order</a>
+                    </div>
+                </div>
+                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                    <button class="dropbtn">People</button>
+                    <div class="dropdown-content">
+                        <a href="#">Customer List</a>
+                        <a href="#"> Add Customer</a>
+                        <a href="#">Supplier List</a>
+                        <a href="#">Add Supplier</a>
+
+                    </div>
+                </div>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> &nbsp; Charts</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Account</a>
+                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                    <button class="dropbtn">Users</button>
+                    <div class="dropdown-content">
+                        <a href="account.html">New User</a>
+                        <a href="#">Users List</a>
+                    </div>
+                </div>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Sign
+                    Out</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-subtle bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="index1.html">Home</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Sign out</a>
+                                    <a class="dropdown-item" href="#!">Account</a>
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-6 ">
+                        <h4>Product Add</h4>
+                        <h6>Create new product</h6>
+                    </div>
+
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label for="">Product_id:</label> <br>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">Product_name:</label> <br>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">Quantity: </label> <br>
+                        <input type="number" name="" id="">
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="">Unit:</label> <br>
+                        <select name="" id="" style="width: 150px;">
+                            <option value="" selected>bin</option>
+                            <option value="">(s)</option>
+                            <option value="">box</option>
+                            <option value="">set</option>
+                            <option value="">bag</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 mt-4">
+                        <label for="">Status: </label> <br>
+                        <select name="" id="" style="width: 150px;">
+                            <option value="">stocking</option>
+                            <option value="">out of stock</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 mt-4">
+                        <label for="">Suppler id :</label> <br>
+                        <select name="" id="" style="width: 150px;">
+                            <option value="sup_bvc">sup_bvc</option>
+                            <option value="sup_hbx">sup_hbx</option>
+                            <option value="sup_hnt">sup_hnt</option>
+                            <option value="sup_htk">sup_htk</option>
+                            <option value="sup_tnv">sup_tnv</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-3 mt-4">
+                        <label for="">Price: </label> <br>
+                        <input type="text" value="">
+                    </div>
+
+                    <div class="col-lg-3 mt-4">
+                        <label for="">CategoryID: </label> <br>
+                        <select name="" id="" style="width: 150px;">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 mt-4">
+                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 mt-4">
+                        <label for="formFile" class="">Photo input example</label>
+                        <input class="form-control" type="file" id="formFile">
+
+                    </div>
+
+                    <div class="col-lg-3 mt-4">
+                        <label for="">Created at:</label> <br>
+                        <input type="date" name="" id="">
+                    </div>
+
+                    <div class="col-lg-3 mt-4">
+                        <label for="">Updated at: </label> <br>
+                        <input type="date" name="" id="">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 mt-4">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-danger">Cancel</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+</body>
+
+</html>

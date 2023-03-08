@@ -2,11 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package Controller;
 
-import Dal.CategoryDao;
+package Crud_product;
+
 import Dal.ProductDao;
-import Model.Category;
 import Model.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,37 +19,35 @@ import java.util.List;
  *
  * @author Admin
  */
-public class DisplayServlet extends HttpServlet {
+public class ListproductServlet extends HttpServlet {
+   
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DisplayServlet</title>");
+            out.println("<title>Servlet ListproductServlet</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DisplayServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListproductServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    }
+    } 
 
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         ProductDao pdb = new ProductDao();
-        CategoryDao cdb = new CategoryDao();
         List<Product> list1 = pdb.getAll();
-        List<Category> listcat = cdb.getAll();
         
-
         //paging
-        
-        int page, numperpage = 18; //page so trang se tra ve // so phan tu trong trang
+         int page, numperpage = 18; //page so trang se tra ve // so phan tu trong trang
         int size = list1.size();
 
         int num = (size % numperpage == 0 ? size / numperpage : size / (numperpage) + 1);
@@ -69,23 +66,20 @@ public class DisplayServlet extends HttpServlet {
         List<Product> list = pdb.getListByPage(list1, start, end);
         
         request.setAttribute("data", list);
-        request.setAttribute("cat", listcat);
         request.setAttribute("page", page);
         request.setAttribute("num", num); //tinh so trang
-        request.getRequestDispatcher("view/displaymain.jsp").forward(request, response);
-    }
+        
+        
+        request.getRequestDispatcher("view/listproduct.jsp").forward(request, response);
+    } 
 
+  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

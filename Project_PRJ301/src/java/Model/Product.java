@@ -17,9 +17,28 @@ public class Product {
     private Date create_at;
     private Date updated_at;
     private int category_id;
+    Category  cate;
 
     public Product() {
     }
+
+    public Product(String product_id, String product_name, int quantify, String unit, String status, String supplier_id, String describe, String photo, float price, Date create_at, Date updated_at, int category_id, Category cate) {
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.quantify = quantify;
+        this.unit = unit;
+        this.status = status;
+        this.supplier_id = supplier_id;
+        this.describe = describe;
+        this.photo = photo;
+        this.price = price;
+        this.create_at = create_at;
+        this.updated_at = updated_at;
+        this.category_id = category_id;
+        this.cate = cate;
+    }
+    
+    
 
     public Product(String product_id, String product_name, int quantify, String unit, String status, String supplier_id, String describe, String photo, float price, Date create_at, Date updated_at, int category_id) {
         this.product_id = product_id;
@@ -35,6 +54,16 @@ public class Product {
         this.updated_at = updated_at;
         this.category_id = category_id;
     }
+
+    public Category getCate() {
+        return cate;
+    }
+
+    public void setCate(Category cate) {
+        this.cate = cate;
+    }
+    
+    
 
     public String getProduct_id() {
         return product_id;
