@@ -6,12 +6,14 @@ package Controller;
 
 import Dal.AccountDao;
 import Model.Account;
+import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -29,20 +31,21 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try ( PrintWriter out = response.getWriter()) {
+            
+            //______________________________________________
             String user = request.getParameter("username");
             String pass = request.getParameter("psw");
-            if (user.isEmpty()) {
-                out.write("use is empty");
-            }
-            if(pass.isEmpty()){
-                out.write("password is empty");
-            }
+           HttpSession session = request.getSession();
+           
             AccountDao adb = new AccountDao();
             Account a = adb.checkLogin(user, pass);
             if (a == null) {
-                response.sendRedirect("view/login.jsp");
+                response.sendRedirect("login");
             } else {
-                response.sendRedirect("newjsp.jsp");
+                session.setAttribute("account", a);
+              //checkrole staff or admin
+              
+                response.sendRedirect("dashbsr");
             }
         }
 

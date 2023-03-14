@@ -24,6 +24,13 @@ public class Category {
         this.category_name = category_name;
     }
 
+    public Category(String category_name, String descr) {
+        this.category_name = category_name;
+        this.descr = descr;
+    }
+        
+        
+
     public int getCategory_id() {
         return category_id;
     }

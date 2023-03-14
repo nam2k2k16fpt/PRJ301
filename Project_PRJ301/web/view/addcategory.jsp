@@ -1,3 +1,11 @@
+<%-- 
+    Document   : addproduct
+    Created on : 08-Mar-2023, 03:33:32
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,13 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Add product</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="dd.png" />
+    <link rel="icon" type="image/x-icon" href="icon/dd.png" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/styledashboard.css">
-    <link rel="stylesheet" href="styleproduct.css">
+    <link href="view/css/styles.css" rel="stylesheet" >
+    <link href="view/css/styledashboard.css" rel="stylesheet">
+    <link href="view/css/styleproduct.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fe000f9b2a.js" crossorigin="anonymous"></script>
 
 
@@ -25,15 +33,15 @@
             <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo
             </div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index _dashboard.html"> &nbsp;
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp;
                     Dashboard</a>
                 <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
                     <button class="dropbtn">Product</button>
                     <div class="dropdown-content">
-                        <a href="product.html">Product List</a>
-                        <a href="addproduct.html">Add Product</a>
-                        <a href="#">Category List</a>
-                        <a href="#">Add Category</a>
+                         <a href="lps">Product List</a>
+                            <a href="adps">Add Product</a>
+                            <a href="lcs">Category List</a>
+                            <a href="acs">Add Category</a>
                     </div>
                 </div>
 
@@ -97,106 +105,40 @@
             <div class="container mt-4">
                 <div class="row">
                     <div class="col-lg-6 ">
-                        <h4>Product Add</h4>
-                        <h6>Create new product</h6>
+                        <h4>Product Add Category</h4>
+                        <h6>Create new product Category</h6>
                     </div>
 
                     <hr>
                 </div>
+                <form action="acs" method="post">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <label for="">Product_id:</label> <br>
-                        <input type="text" name="" id="">
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="">Product_name:</label> <br>
-                        <input type="text" name="" id="">
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="">Quantity: </label> <br>
-                        <input type="number" name="" id="">
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="">Unit:</label> <br>
-                        <select name="" id="" style="width: 150px;">
-                            <option value="" selected>bin</option>
-                            <option value="">(s)</option>
-                            <option value="">box</option>
-                            <option value="">set</option>
-                            <option value="">bag</option>
-
-                        </select>
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 mt-4">
-                        <label for="">Status: </label> <br>
-                        <select name="" id="" style="width: 150px;">
-                            <option value="">stocking</option>
-                            <option value="">out of stock</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3 mt-4">
-                        <label for="">Suppler id :</label> <br>
-                        <select name="" id="" style="width: 150px;">
-                            <option value="sup_bvc">sup_bvc</option>
-                            <option value="sup_hbx">sup_hbx</option>
-                            <option value="sup_hnt">sup_hnt</option>
-                            <option value="sup_htk">sup_htk</option>
-                            <option value="sup_tnv">sup_tnv</option>
-                        </select>
-                    </div>
-
-                    <div class="col-lg-3 mt-4">
-                        <label for="">Price: </label> <br>
-                        <input type="text" value="">
-                    </div>
-
-                    <div class="col-lg-3 mt-4">
-                        <label for="">CategoryID: </label> <br>
-                        <select name="" id="" style="width: 150px;">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
+                   
+                        <label for="">CategoryName:</label> <br>
+                        <input type="text" name="pname" value="${param.pname}" required>
+                    
                 </div>
 
                 <div class="row">
                     <div class="col-lg-12 mt-4">
                         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" maxlength="1000" required></textarea>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-6 mt-4">
-                        <label for="formFile" class="">Photo input example</label>
-                        <input class="form-control" type="file" id="formFile">
-
-                    </div>
-
-                    <div class="col-lg-3 mt-4">
-                        <label for="">Created at:</label> <br>
-                        <input type="date" name="" id="">
-                    </div>
-
-                    <div class="col-lg-3 mt-4">
-                        <label for="">Updated at: </label> <br>
-                        <input type="date" name="" id="">
-                    </div>
-
-                </div>
 
                 <div class="row">
                     <div class="col-lg-4 mt-4">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Add</button>
                         <button type="reset" class="btn btn-danger">Cancel</button>
 
                     </div>
 
+                </div>
+                
+                </form>
+                <div class="col-lg-8 mt-4">
+                    <h3 style="color: red">${requestScope.error}</h3>
                 </div>
 
             </div>
@@ -208,7 +150,9 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="view/js/scripts.js"></script>
+        
+        
 </body>
 
 </html>

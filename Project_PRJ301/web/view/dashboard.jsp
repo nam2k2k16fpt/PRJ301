@@ -11,7 +11,7 @@
     <meta name="author" content="" />
     <title>Simple Sidebar - Start Bootstrap Template</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="webhead/assets/dd.png" />
+    <link rel="icon" type="image/x-icon" href="assets/dd.png" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link  rel="stylesheet" href="webhead/css/styles.css" />
     <link  rel="stylesheet" href="webhead/css/styledashboard.css" />
@@ -26,14 +26,14 @@
         <div class="border-end bg-light" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo</div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> &nbsp; Dashboard</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp; Dashboard</a>
                 <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
                     <button class="dropbtn">Product</button>
                     <div class="dropdown-content">
-                        <a href="#">Product List</a>
-                        <a href="#">Add Product</a>
-                        <a href="#">Category List</a>
-                        <a href="#">Add Category</a>
+                        <a href="lps">Product List</a>
+                        <a href="adps">Add Product</a>
+                        <a href="lcs">Category List</a>
+                        <a href="acs">Add Category</a>
                         </div>
                       </div>
                 

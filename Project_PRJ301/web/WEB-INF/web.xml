@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>Admin</param-value>
+    </context-param>
+    <context-param>
+        <param-name>passwd</param-name>
+        <param-value>686868</param-value>
+    </context-param>
+    <filter>
+        <filter-name>checklogin</filter-name>
+        <filter-class>Filter.AuthenticationFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>homefilter</filter-name>
+        <filter-class>Filter.HomeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>homefilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>checklogin</filter-name>
+        <url-pattern>/dashbsr</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>Controller.LoginServlet</servlet-class>
@@ -10,7 +34,7 @@
     </servlet>
     <servlet>
         <servlet-name>DashboardServlet</servlet-name>
-        <servlet-class>Crud_product.DashboardServlet</servlet-class>
+        <servlet-class>Controller.DashboardServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ListproductServlet</servlet-name>
@@ -33,8 +57,72 @@
         <servlet-class>Crud_product.AddproductServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteproductServlet</servlet-name>
-        <servlet-class>Controller.DeleteproductServlet</servlet-class>
+        <servlet-name>ListcategoryServlet</servlet-name>
+        <servlet-class>Crud_category.ListcategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddcategoryServlet</servlet-name>
+        <servlet-class>Crud_category.AddcategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletecategoryServlet</servlet-name>
+        <servlet-class>Crud_category.DeletecategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatecategoryServlet</servlet-name>
+        <servlet-class>Crud_category.UpdatecategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListcustomerServlet</servlet-name>
+        <servlet-class>Crud_people.ListcustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListsupplierServlet</servlet-name>
+        <servlet-class>Crud_people.ListsupplierServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddcustomerServlet</servlet-name>
+        <servlet-class>Crud_people.AddcustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletecustomerServlet</servlet-name>
+        <servlet-class>Crud_people.DeletecustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatecustomerServlet</servlet-name>
+        <servlet-class>Crud_people.UpdatecustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DisplaydetailServlet</servlet-name>
+        <servlet-class>Controller.DisplaydetailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgotpswServlet</servlet-name>
+        <servlet-class>Controller.ForgotpswServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserVertify</servlet-name>
+        <servlet-class>Email.UserVertify</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerityCode</servlet-name>
+        <servlet-class>Email.VerityCode</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VertifyServlet</servlet-name>
+        <servlet-class>Vertify.VertifyServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletesupplierServlet</servlet-name>
+        <servlet-class>Crud_people.DeletesupplierServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddsupplierServlet</servlet-name>
+        <servlet-class>Crud_people.AddsupplierServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdatesupplierServlet</servlet-name>
+        <servlet-class>Crud_people.UpdatesupplierServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -69,8 +157,72 @@
         <url-pattern>/adps</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteproductServlet</servlet-name>
-        <url-pattern>/deletepro</url-pattern>
+        <servlet-name>ListcategoryServlet</servlet-name>
+        <url-pattern>/lcs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddcategoryServlet</servlet-name>
+        <url-pattern>/acs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletecategoryServlet</servlet-name>
+        <url-pattern>/dcs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatecategoryServlet</servlet-name>
+        <url-pattern>/ucs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListcustomerServlet</servlet-name>
+        <url-pattern>/listcustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListsupplierServlet</servlet-name>
+        <url-pattern>/listsupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddcustomerServlet</servlet-name>
+        <url-pattern>/addcustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletecustomerServlet</servlet-name>
+        <url-pattern>/deletecustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatecustomerServlet</servlet-name>
+        <url-pattern>/updatecustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplaydetailServlet</servlet-name>
+        <url-pattern>/displaydetail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotpswServlet</servlet-name>
+        <url-pattern>/forgotpwd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserVertify</servlet-name>
+        <url-pattern>/uservertify</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerityCode</servlet-name>
+        <url-pattern>/veritycode</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VertifyServlet</servlet-name>
+        <url-pattern>/vertifycode</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletesupplierServlet</servlet-name>
+        <url-pattern>/deletesupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddsupplierServlet</servlet-name>
+        <url-pattern>/addsupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdatesupplierServlet</servlet-name>
+        <url-pattern>/updatesupplier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -78,6 +230,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>login</welcome-file>
     </welcome-file-list>
 </web-app>

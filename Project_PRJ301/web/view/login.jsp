@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +24,16 @@
                     <h1> Welcome to Our Application</h1>
                     <p>Please login in use the platform</p>
                 </div>
+                <c:set var="i" value="${sessionScope.cfaccount}"/>
                 <form class="login-form" method="post" action="login">
                     <div class="login-form-content">
                         <div class="form-item">
                             <label>Enter Username: </label>
-                            <input type="text" name="username">
+                            <input type="text" name="username" value="${i.username}" required>
                         </div>
                         <div class="form-item">
                             <label for="password">Enter Password: </label>
-                            <input type="password" id="password" name="psw">
+                            <input type="password"  name="psw" value="${i.password}" required>
                         </div>
                         <div class="form-item">
                             <div class="checkbox">
@@ -46,7 +48,7 @@
                             <span class="sign"><a href="signup.jsp"> Sign up </a></span>
                         </div>-->
                         <div class="footer-psw">
-                            <span class="psw"><a href="forgetpassword.jsp">Forgot password?</a></span>
+                            <span class="psw"><a href="forgotpwd">Forgot password?</a></span>
                         </div>
                     </div>
 

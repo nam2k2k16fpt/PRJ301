@@ -18,9 +18,9 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="icon/dd.png" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../view/css/styles.css" rel="stylesheet" />
-    <link  rel="stylesheet" href="../view/css/styledashboard.css" />
-    <link rel="stylesheet" href="../view/css/styleproduct.css">
+    <link href="view/css/styles.css" rel="stylesheet" >
+    <link href="view/css/styledashboard.css" rel="stylesheet">
+    <link href="view/css/styleproduct.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fe000f9b2a.js" crossorigin="anonymous"></script>
 
 
@@ -33,15 +33,15 @@
             <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo
             </div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index _dashboard.html"> &nbsp;
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp;
                     Dashboard</a>
                 <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
                     <button class="dropbtn">Product</button>
                     <div class="dropdown-content">
-                        <a href="product.html">Product List</a>
-                        <a href="addproduct.html">Add Product</a>
-                        <a href="#">Category List</a>
-                        <a href="#">Add Category</a>
+                         <a href="lps">Product List</a>
+                            <a href="adps">Add Product</a>
+                            <a href="lcs">Category List</a>
+                            <a href="acs">Add Category</a>
                     </div>
                 </div>
 
@@ -111,30 +111,27 @@
 
                     <hr>
                 </div>
-                <form action="adps" method="GET">
+                <form action="adps" method="post">
                 <div class="row">
                     
                     <div class="col-lg-3">
                         <label for="">Product_id:</label> <br>
-                        <input type="text" name="pid" value="${param.pid}">
+                        <input type="text" name="pid" value="" required>
                     </div>
                     <div class="col-lg-3">
                         <label for="">Product_name:</label> <br>
-                        <input type="text" name="pname" value="${param.pname}">
+                        <input type="text" name="pname" value="" required>
                     </div>
                     <div class="col-lg-3">
                         <label for="">Quantity: </label> <br>
-                        <input type="text" name="pquan" id="" pattern="[0-9]+" value="${param.pquan}">
+                        <input type="text" name="pquan" id="" pattern="[0-9]+" value="" required>
                     </div>
                     <div class="col-lg-3">
                         <label for="">Unit:</label> <br>
-                        <select name="unit" id="" style="width: 150px;">
-                            <option value="1" selected>bin</option>
-                            <option value="2">(s)</option>
-                            <option value="3">box</option>
-                            <option value="4">set</option>
-                            <option value="5">bag</option>
-
+                        <select name="unit"style="width: 150px;">
+                            <c:forEach var="u" items="${dataunit}">
+                                <option value="${u.trim()}">${u.trim()}</option>
+                            </c:forEach>
                         </select>
                     </div>
 
@@ -147,26 +144,24 @@
                     </div>
                     <div class="col-lg-3 mt-4">
                         <label for="">Suppler id :</label> <br>
-                        <select name="suid" id="" style="width: 150px;">
-                            <option value="sup_bvc">sup_bvc</option>
-                            <option value="sup_hbx">sup_hbx</option>
-                            <option value="sup_hnt">sup_hnt</option>
-                            <option value="sup_htk">sup_htk</option>
-                            <option value="sup_tnv">sup_tnv</option>
+                        <select name="suid" style="width: 150px;">
+                            <c:forEach var="su" items="${datasupplier}">
+                                <option value="${su.sup_id}">${su.sup_id}</option>
+                            </c:forEach>
                         </select>
                     </div>
 
                     <div class="col-lg-3 mt-4">
                         <label for="">Price: </label> <br>
-                        <input type="text" value="" name="price" pattern="[0-9]+(\.[0-9]{1,2})?%?">
+                        <input type="text" value="" name="price" pattern="[0-9]+(\.[0-9]{1,2})?%?" required>
                     </div>
 
                     <div class="col-lg-3 mt-4">
-                        <label for="">CategoryID: </label> <br>
-                        <select name="cat" id="" style="width: 150px;">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <label for="">CategoryName: </label> <br>
+                        <select name="cat" style="width: 150px;">
+                            <c:forEach var="ca" items="${datacategory}">
+                                <option value="${ca.category_id}">${ca.category_name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
@@ -174,7 +169,7 @@
                 <div class="row">
                     <div class="col-lg-12 mt-4">
                         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" maxlength="1000"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" maxlength="1000" required></textarea>
                     </div>
                 </div>
 
@@ -185,21 +180,21 @@
 
                     </div>
 
-                    <div class="col-lg-3 mt-4">
+<!--                    <div class="col-lg-3 mt-4">
                         <label for="">Created at:</label> <br>
-                        <input type="date" name="createat" id="">
-                    </div>
+                        <input type="date" name="createat" >
+                    </div>-->
 
-                    <div class="col-lg-3 mt-4">
+<!--                    <div class="col-lg-3 mt-4">
                         <label for="">Updated at: </label> <br>
-                        <input type="date" name="updateat" id="">
-                    </div>
+                        <input type="date" name="updateat">
+                    </div>-->
 
                 </div>
 
                 <div class="row">
                     <div class="col-lg-4 mt-4">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success">Add</button>
                         <button type="reset" class="btn btn-danger">Cancel</button>
 
                     </div>
@@ -207,6 +202,9 @@
                 </div>
                 
                 </form>
+                <div class="col-lg-8 mt-4">
+                    <h3>${requestScope.error}</h3>
+                </div>
 
             </div>
 
@@ -217,7 +215,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="../view/js/scripts.js"></script>
+        <script src="view/js/scripts.js"></script>
         
         
 </body>

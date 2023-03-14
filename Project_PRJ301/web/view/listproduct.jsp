@@ -17,8 +17,8 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="icon/dd.png" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="webhead/css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="webhead/css/styledashboard.css">
+        <link href="view/css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="view/css/styledashboard.css">
 
         <script src="https://kit.fontawesome.com/fe000f9b2a.js" crossorigin="anonymous"></script>
         <style>
@@ -70,15 +70,15 @@
                 <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo
                 </div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> &nbsp;
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp;
                         Dashboard</a>
                     <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
                         <button class="dropbtn">Product</button>
                         <div class="dropdown-content">
-                            <a href="#">Product List</a>
-                            <a href="#">Add Product</a>
-                            <a href="#">Category List</a>
-                            <a href="#">Add Category</a>
+                            <a href="lps">Product List</a>
+                            <a href="adps">Add Product</a>
+                            <a href="lcs">Category List</a>
+                            <a href="acs">Add Category</a>
                         </div>
                     </div>
 
@@ -146,7 +146,7 @@
                             <h6>Manage your products</h6>
                         </div>
                         <div class="col-lg-6 ">
-                            <a href="view/addproduct.jsp" class="btn btn-added"><i class="fa-solid fa-plus"></i>Add New Product</a>
+                            <a href="adps" class="btn btn-added"><i class="fa-solid fa-plus"></i>Add New Product</a>
                         </div>
                         <hr>
                     </div>
@@ -174,6 +174,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         <c:forEach items="${requestScope.data}" var="i">
                                             <tr>
 
@@ -187,10 +188,10 @@
                                                     <a class="me-3" href="dps?id=${i.product_id}">
                                                         <i class="fa-regular fa-eye"></i>
                                                     </a>
-                                                    <a class="me-3" href="#">
+                                                    <a class="me-3" href="udps?pid=${i.product_id}">
                                                         <i class="fa-regular fa-pen-to-square"></i>
                                                     </a>
-                                                    <a class="confirm-text" href="#">
+                                                    <a class="confirm-text" href="#"  onclick="doDelete('${i.product_id}')">
                                                         <i class="fa-solid fa-trash-can"></i>
                                                     </a>
                                                 </td>
@@ -226,7 +227,14 @@
             <!-- Bootstrap core JS-->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
             <!-- Core theme JS-->
-            <script src="webhead/js/scripts.js"></script>
+            <script src="view/js/scripts.js"></script>
+            <script type="text/javascript">
+                function doDelete(id) {
+                    if (confirm("Are you are to delete product id= '" + id + "'?")) {
+                        window.location = "deleteproduct?id=" + id; //trang DeleteServlet se thuc hien xoa cau truy van
+                    }
+                }
+            </script>
     </body>
 
 </html>

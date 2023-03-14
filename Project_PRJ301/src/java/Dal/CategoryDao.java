@@ -37,18 +37,27 @@ public class CategoryDao extends DBContext{
         return list;
     }
     
+        //paging
+        
+   public List<Category> getListByPage(List<Category> list, int start, int end){
+       ArrayList<Category> arr = new ArrayList<>();
+       for (int i = start; i < end; i++) {
+           arr.add(list.get(i));
+       }
+       return arr;
+   }
+    
     //insert category
     public void insertCategory(Category c){
         String sql = "INSERT INTO [dbo].[Category]\n" +
-"           ([CategoryID]\n" +
-"           ,[CategoryName]\n" +
+"           ([CategoryName]\n" +
 "           ,[Descr])\n" +
-"     VALUES(?,?,?)";
+"     VALUES\n" +
+"           (?,?)";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setInt(1, c.getCategory_id());
-            st.setString(2, c.getCategory_name());
-            st.setString(3, c.getDescr());
+            st.setString(1, c.getCategory_name());
+            st.setString(2, c.getDescr());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -70,13 +79,12 @@ public class CategoryDao extends DBContext{
     //update category
     public void updateCategory(Category c){
         String sql = "UPDATE [dbo].[Category]\n" +
-"   SET [CategoryID] = ?" +
-"      ,[CategoryName] = ?" +
+"   SET [CategoryName] = ?" +
 "      ,[Descr] = ?" +
 " WHERE CategoryID = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(3, c.getCategory_name());
+            st.setString(1, c.getCategory_name());
             st.setString(2, c.getDescr());
             st.setInt(3, c.getCategory_id());
             st.executeUpdate();
@@ -85,12 +93,55 @@ public class CategoryDao extends DBContext{
         }
     }
     
+        //select categoryname
+    public List<String> getAllUnit(){
+        List<String> list = new ArrayList<>();
+        String sql = "SELECT DIStinct CategoryName FROM Category";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+               String catname = rs.getString("CategoryName");
+               list.add(catname);
+                
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    //checkid category
+    public Category getCheckIdCategory(int id){
+        String sql = "SELECT * FROM Category WHERE CategoryID = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if(rs.next()){
+                Category c = new Category();
+                c.setCategory_id(rs.getInt("CategoryID"));
+                c.setCategory_name(rs.getString("CategoryName"));
+                c.setDescr((rs.getString("Descr")));
+                return c;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         CategoryDao cdb = new CategoryDao();
-        List<Category> listc = cdb.getAll();
-        
-        for (Category category : listc) {
-            System.out.println(category.toString());
+//        List<Category> listc = cdb.getAll();
+//        
+//        for (Category category : listc) {
+//            System.out.println(category.toString());
+//        }
+
+        List<String> lst = cdb.getAllUnit();
+        for (String string : lst) {
+            System.out.println(string.trim());
         }
     }
 }

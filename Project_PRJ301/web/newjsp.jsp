@@ -13,12 +13,15 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="view/header.jsp"></jsp:include>
         <h1>List img</h1>
         
-        <!--<img src="img_product/1(144).png" alt="alt"/>-->
+        <img src="img_product/1(144).png" alt="alt"/>
+        
+        <jsp:include page="view/footer.jsp"></jsp:include>
         
        <br>
-          <c:import url="view/footer.jsp"/>
+         
         
         
         

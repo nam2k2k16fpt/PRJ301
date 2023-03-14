@@ -42,6 +42,41 @@ public class ProductDao extends DBContext {
 
     }
     
+    //select unit
+    public List<String> getAllUnit(){
+        List<String> list = new ArrayList<>();
+        String sql = "SELECT DIStinct Unit FROM Product";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+               String supname = rs.getString("Unit");
+               list.add(supname);
+                
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+        //select status
+    public List<String> getAllStatus(){
+        List<String> list = new ArrayList<>();
+        String sql = "SELECT DIStinct Status FROM Product";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+               String staname = rs.getString("Status");
+               list.add(staname);
+                
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
     //select following id
     public List<Product> getByProductId(String id){
         List<Product> list = new ArrayList<>();
@@ -98,10 +133,8 @@ public class ProductDao extends DBContext {
                 + "           ,[Describe]\n"
                 + "           ,[photo]\n"
                 + "           ,[Price]\n"
-                + "           ,[Created_at]\n"
-                + "           ,[Updated_at]\n"
                 + "           ,[CategoryID])\n"
-                + "     VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "     VALUES(?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
@@ -115,11 +148,9 @@ public class ProductDao extends DBContext {
             st.setString(7, p.getDescribe());
             st.setString(8, p.getPhoto());
             st.setFloat(9, p.getPrice());
-            st.setDate(10, p.getCreate_at());
-            st.setDate(11, p.getUpdated_at());
-            st.setInt(12, p.getCategory_id());
+            st.setInt(10, p.getCategory_id());
             st.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
@@ -132,7 +163,18 @@ public class ProductDao extends DBContext {
             st.setString(1, id);
             ResultSet rs = st.executeQuery();
             if(rs.next()){
-                Product p = new Product(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getFloat(9),rs.getDate(10),rs.getDate(11),rs.getInt(12));
+                Product p = new Product();
+                p.setProduct_id(rs.getString("Product_id"));
+                p.setProduct_name(rs.getString("Product_name"));
+                p.setQuantify(rs.getInt("Quantity"));
+                p.setStatus(rs.getString("Status"));
+                p.setSupplier_id(rs.getString("Supplier_id"));
+                p.setDescribe(rs.getString("Describe"));
+                p.setPhoto(rs.getString("photo"));
+                p.setPrice(rs.getFloat("Price"));
+                p.setCreate_at(rs.getDate("Created_at"));
+                p.setUpdated_at(rs.getDate("Updated_at"));
+                p.setCategory_id(rs.getInt("CategoryID"));
                  return p;
             }
         } catch (SQLException e) {
@@ -165,7 +207,6 @@ public class ProductDao extends DBContext {
                 + "      ,[Describe] = ?"
                 + "      ,[photo] = ?"
                 + "      ,[Price] = ?"
-                + "      ,[Created_at] = ?"
                 + "      ,[Updated_at] = ?"
                 + "      ,[CategoryID] = ?"
                 + " WHERE Product_id = ?";
@@ -180,10 +221,9 @@ public class ProductDao extends DBContext {
             st.setString(6, p.getDescribe());
             st.setString(7, p.getPhoto());
             st.setFloat(8, p.getPrice());
-            st.setDate(9, p.getCreate_at());
-            st.setDate(10, p.getUpdated_at());
-            st.setInt(11, p.getCategory_id());
-            st.setString(12, p.getProduct_id());
+            st.setDate(9, p.getUpdated_at());
+            st.setInt(10, p.getCategory_id());
+            st.setString(11, p.getProduct_id());
 
             st.executeUpdate();
 
@@ -194,10 +234,15 @@ public class ProductDao extends DBContext {
 
     public static void main(String[] args) {
         ProductDao pdb = new ProductDao();
-        List<Product> listp = pdb.getAll();
+//        List<Product> listp = pdb.getAll();
+//
+//        for (int i = 0; i < 2; i++) {
+//            System.out.println(listp.get(i).toString());
+//        }
 
-        for (int i = 0; i < 2; i++) {
-            System.out.println(listp.get(i).toString());
+            List<String> lists = pdb.getAllUnit();
+            for (String list : lists) {
+                System.out.println(list.trim());
         }
 
     }

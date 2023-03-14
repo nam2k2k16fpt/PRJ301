@@ -23,87 +23,18 @@
 
             
             .pagination a.active {
-                background-color: #4CAF50;
+                background-color: #000;
                 color: white;
             }
             .pagination a:hover:not(.active) {
-                background-color: chocolate;
+                background-color: #fff;
             }
         </style>
 
     </head>
 
     <body>
-        <section class="header">
-            <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Hourseware GoGo</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Category
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    More
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <button type="button" class="btn btn-success">Login</button>
-
-                    </div>
-                </div>
-            </nav>
-        </section>
-        <section class="text-bg-secondary">
-            <div class="container p-2">
-                <div class="row">
-                    <div class="col-lg-1" style="font-size: 40px;">
-                        <i class="fa-brands fa-docker"></i>
-                    </div>
-                    <div class="col-lg-11">
-                        <div class="input-group mt-2">
-                            <input type="text" class="form-control" placeholder="Recipient's username"
-                                   aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button type="button" class="btn btn-primary btn-lg"><i
-                                    class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+       <jsp:include page="header.jsp"></jsp:include>
 
         <section class="content mt-3">
             <div class="container">
@@ -178,12 +109,12 @@
                         <div class="row product-list" style="background-color: floralwhite;">
                             <c:forEach var="i" items="${requestScope.data}"> 
                                 <div class="col-lg-4 mb-2">
-                                    <div class="card bg-warning" style="width: 18rem;">
+                                    <div class="card bg-warning" style="width: 16rem;">
                                         <img src="img_product/${i.photo}" class="card-img-top" alt="${i.product_id}" width="286px" height="190px">
                                         <div class="card-body">
                                             <h5 class="card-title">${i.product_name}</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            <p class="card-text"><strong>${i.status}</strong></p>
+                                            <a href="displaydetail?pid=${i.product_id}" class="btn btn-primary" target="_blank">Detail</a>
                                         </div>
                                     </div>
                                 </div>
@@ -195,138 +126,10 @@
         </section>
 
 
-        <section class="footer bg-dark text-white">
-            <div class="container mt-2">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <h4>CONTENT</h4>
-                        <ul class="footer-content-list font-sm">
-                            <li><a class="link-inverted" href="/calendar">Calendar of festivities</a></li>
-                            <li><a class="link-inverted" href="/new">New assets</a></li>
-                            <li><a class="link-inverted" href="/popular">The most popular content</a></li>
-                            <li><a class="link-inverted" href="/tags">Search trends</a></li>
-                            <li><a class="link-inverted" href="https://www.freepik.com/blog/">Blog</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3">
-                        <h4>INFORMATION</h4>
-                        <ul class="footer-content-list font-sm">
-                            <li><a id="footer-plans-pricing-link" class="link-inverted"
-                                   href="https://www.freepik.com/pricing">Pricing</a></li>
-                            <li><a class="link-inverted" href="https://www.freepikcompany.com/about_us">About us</a></li>
-                            <li><a class="link-inverted" href="https://www.freepikcompany.com/business" target="_blank"
-                                   rel="nofollow noopener noreferrer">Business</a></li>
-                            <li><a class="link-inverted" href="https://www.freepikcompany.com/jobs">Jobs</a></li>
-                            <li><a class="link-inverted" href="https://contributor.freepik.com" target="_blank"
-                                   rel="noopener noreferrer">Sell your content</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3">
-                        <h4>LEGAL</h4>
-                        <div class="full-width footer__menu footer__link">
-                            <ul class="footer-content-list font-sm">
-                                <li><a class="link-inverted" href="https://www.freepikcompany.com/legal#nav-freepik"
-                                       target="_blank" rel="noopener noreferrer">Terms and conditions</a></li>
-                                <li><a class="link-inverted" href="https://www.freepikcompany.com/legal#nav-freepik-license"
-                                       target="_blank" rel="noopener noreferrer">License agreement</a></li>
-                                <li><a class="link-inverted" href="https://www.freepikcompany.com/privacy" target="_blank"
-                                       rel="noopener noreferrer">Privacy policy</a></li>
-                                <li><a class="link-inverted" href="https://www.freepikcompany.com/copyright" target="_blank"
-                                       rel="noopener noreferrer">Copyright information</a></li>
-                                <li><a class="link-inverted" href="https://www.freepikcompany.com/cookie" target="_blank"
-                                       rel="noopener noreferrer">Cookies policy</a></li>
+        <jsp:include page="footer.jsp"></jsp:include>
 
-                            </ul>
-                            <h4 class="mt-3">SUPPORT</h4>
-                            <ul class="footer-content-list font-sm">
-                                <li><a class="link-inverted" href="https://support.freepik.com/hc/en-us">FAQ</a></li>
-                                <li><a class="link-inverted" href="https://www.freepik.com/profile/support">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <h4>SOCIAL MEDIA</h4>
-
-
-                        <span class="box50 border-danger"> <i class="fa-brands fa-facebook"></i></span>
-
-                        <span class="box50 border-danger"><i class="fa-brands fa-twitter"></i> </span>
-
-                        <span class="box50 border-danger"><i class="fa-brands fa-pinterest"></i> </span>
-
-                        <span class="box50 border-danger"><i class="fa-brands fa-instagram"></i></span>
-
-                        <span class="box50 border-danger"><i class="fa-brands fa-youtube"></i></span>
-
-
-
-
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-10">
-                            <img src="icon\fc592710-eaff-48b1-be76-bf378c09c277.png" alt="logo.png"
-                                 width="191px" height="35px">
-                            <p class="font-sm line-height-md text__general--text-inverted mg-none"><span
-                                    class="copyright">Copyright</span>&nbsp;©&nbsp; 2010-2023 Freepik Company S.L. <span
-                                    class="rights-reserved">All rights reserved.</span></p>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="dropup-center dropup">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                    Language
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">VietNam</a></li>
-                                    <li><a class="dropdown-item" href="#">English</a></li>
-                                    <li><a class="dropdown-item" href="#">日本語</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row mb-2">
-                        <div class="col-lg-6">Hourseware GoGo Company projects</div>
-
-                        <div class="col-lg-1">
-                            <ul>
-                                <li><a class="bold" href="https://www.freepik.com">Freepik</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-1">
-                            <ul>
-                                <li><a class="bold another-project" rel="nofollow noopener noreferrer"
-                                       href="https://www.flaticon.com" target="_blank">Flaticon</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-1">
-                            <ul>
-                                <li><a class="bold another-project" rel="nofollow noopener noreferrer"
-                                       href="https://slidesgo.com" target="_blank">Slidesgo</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-1">
-                            <ul>
-                                <li><a class="bold another-project" rel="nofollow noopener noreferrer"
-                                       href="https://wepik.com?utm=www.freepik.com" target="_blank">Wepik</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-2">
-                            <ul>
-                                <li><a class="bold another-project" rel="nofollow noopener noreferrer"
-                                       href="https://www.videvo.net" target="_blank">Videvo</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-
-
-
-
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        
+              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
                 integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"

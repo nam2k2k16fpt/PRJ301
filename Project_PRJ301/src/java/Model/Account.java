@@ -13,12 +13,34 @@ public class Account {
     private String username;
     private String password;
     private boolean status;
+    private int user_id;
+    Users u;
 
-    public Account(int id, String username, String password, boolean status) {
+    public Account(int id, String username, String password, boolean status, int user_id, Users u) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.status = status;
+        this.user_id = user_id;
+        this.u = u;
+    }
+
+    public Users getU() {
+        return u;
+    }
+
+    public void setU(Users u) {
+        this.u = u;
+    }
+    
+    
+
+    public Account(int id, String username, String password, boolean status, int user_id) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.status = status;
+        this.user_id = user_id;
     }
 
     public Account() {
@@ -56,10 +78,20 @@ public class Account {
         this.status = status;
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", status=" + status + '}';
+        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", status=" + status + ", user_id=" + user_id + '}';
     }
+
+   
     
     
             
