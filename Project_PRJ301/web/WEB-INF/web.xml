@@ -18,11 +18,24 @@
     </filter>
     <filter-mapping>
         <filter-name>homefilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/displaymain.jsp</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>checklogin</filter-name>
         <url-pattern>/dashbsr</url-pattern>
+        <url-pattern>/adps</url-pattern>
+        <url-pattern>/dps</url-pattern>
+        <url-pattern>/lps</url-pattern>
+        <url-pattern>/udps</url-pattern>
+        <url-pattern>/acs</url-pattern>
+        <url-pattern>/lcs</url-pattern>
+        <url-pattern>/ucs</url-pattern>
+        <url-pattern>/addcustomer</url-pattern>
+        <url-pattern>/addsupplier</url-pattern>
+        <url-pattern>/listcustomer</url-pattern>
+        <url-pattern>/listsupplier</url-pattern>
+        <url-pattern>/updatecustomer</url-pattern>
+        <url-pattern>/updatesupplier</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -124,6 +137,10 @@
         <servlet-name>UpdatesupplierServlet</servlet-name>
         <servlet-class>Crud_people.UpdatesupplierServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewPasswordServlet</servlet-name>
+        <servlet-class>Controller.NewPasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -223,6 +240,10 @@
     <servlet-mapping>
         <servlet-name>UpdatesupplierServlet</servlet-name>
         <url-pattern>/updatesupplier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPasswordServlet</servlet-name>
+        <url-pattern>/newpassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

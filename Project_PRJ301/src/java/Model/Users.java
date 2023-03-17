@@ -8,6 +8,9 @@ public class Users {
     private int user_id;
     private String displayname;
     private String fullname;
+    private String username;
+    private String password;
+    private boolean status;
     private String address;
     private String email;
     private String phone;
@@ -27,6 +30,46 @@ public class Users {
         this.role = role;
         this.manager_user = manager_user;
     }
+
+    public Users(int user_id, String displayname, String fullname, String username, String password, boolean status, String address, String email, String phone, String role, int manager_user) {
+        this.user_id = user_id;
+        this.displayname = displayname;
+        this.fullname = fullname;
+        this.username = username;
+        this.password = password;
+        this.status = status;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.role = role;
+        this.manager_user = manager_user;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+    
+    
 
     public Users(String role) {
         this.role = role;

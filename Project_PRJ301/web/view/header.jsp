@@ -23,7 +23,7 @@
         <script src="https://kit.fontawesome.com/fe000f9b2a.js" crossorigin="anonymous"></script>
     </head>
     <body>
-                <section class="header">
+        <section class="header">
             <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Hourseware GoGo</a>
@@ -42,19 +42,19 @@
                                 CategoryDao cdb = new CategoryDao();
                                 List<Category> list = cdb.getAll();
                             %>
-                            
-                            
+
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                    aria-expanded="false">
                                     Category
                                 </a>
-                                 <ul class="dropdown-menu">
-                                <%
-                               for (Category category : list) {
-                            %>
-                                <li><a class="dropdown-item" href="#"><%= category.getCategory_name()%></a></li>
-                                <%
+                                <ul class="dropdown-menu">
+                                    <%
+                                   for (Category category : list) {
+                                    %>
+                                    <li><a class="dropdown-item" href="#"><%= category.getCategory_name()%></a></li>
+                                        <%
                                     }%>   
                                 </ul>
                             </li>
@@ -74,8 +74,9 @@
                             </li>
 
                         </ul>
-                        <button type="button" class="btn btn-success">Login</button>
-
+                                <form action="login" method="get">
+                                    <button type="submit" value="Login" class="btn btn-success">Login</button>
+                        </form>
                     </div>
                 </div>
             </nav>
@@ -98,8 +99,8 @@
                 </div>
             </div>
         </section>
-        
-        
+
+
 
     </body>
 </html>

@@ -4,8 +4,8 @@
  */
 package Controller;
 
-import Dal.AccountDao;
-import Model.Account;
+import Dal.UsersDao;
+import Model.Users;
 import jakarta.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/login.jsp").forward(request, response);
+        request.getRequestDispatcher("weblogin/login.jsp").forward(request, response);
     }
 
     @Override
@@ -35,16 +35,17 @@ public class LoginServlet extends HttpServlet {
             //______________________________________________
             String user = request.getParameter("username");
             String pass = request.getParameter("psw");
-           HttpSession session = request.getSession();
+            HttpSession session = request.getSession();
            
-            AccountDao adb = new AccountDao();
-            Account a = adb.checkLogin(user, pass);
-            if (a == null) {
-                response.sendRedirect("login");
+            UsersDao udb = new UsersDao();
+            Users u = udb.getCheckAccount(user, pass);
+            if (u == null) {
+                request.setAttribute("error1", "It's look like you're not a yet member!");
+                request.getRequestDispatcher("weblogin/login.jsp").forward(request, response);
             } else {
-                session.setAttribute("account", a);
               //checkrole staff or admin
               
+                session.setAttribute("account", u);
                 response.sendRedirect("dashbsr");
             }
         }

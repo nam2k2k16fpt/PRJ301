@@ -8,13 +8,23 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="icon" type="image/x-icon" href="icon/dd.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login Page</title>
 
         <link rel="stylesheet" href="weblogin/css/style.css" type="text/css"/>
+
+        <style>
+            #error{
+                color: red;
+                text-align: center;
+                display: inline-block;
+                margin-top: -2rem;
+            }
+        </style>
 
     </head>
     <body>
@@ -24,16 +34,20 @@
                     <h1> Welcome to Our Application</h1>
                     <p>Please login in use the platform</p>
                 </div>
-                <c:set var="i" value="${sessionScope.cfaccount}"/>
+                <div id="error">
+                    <c:if test="${not empty error1}">
+                        <h5>${error1}</h5>
+                    </c:if>
+                </div>
                 <form class="login-form" method="post" action="login">
                     <div class="login-form-content">
                         <div class="form-item">
                             <label>Enter Username: </label>
-                            <input type="text" name="username" value="${i.username}" required>
+                            <input type="text" name="username" required>
                         </div>
                         <div class="form-item">
                             <label for="password">Enter Password: </label>
-                            <input type="password"  name="psw" value="${i.password}" required>
+                            <input type="password"  name="psw" required>
                         </div>
                         <div class="form-item">
                             <div class="checkbox">
@@ -44,9 +58,9 @@
                         <button type="submit">Sign In</button>
                     </div>
                     <div class="footer">
-<!--                        <div class="footer-signup">
-                            <span class="sign"><a href="signup.jsp"> Sign up </a></span>
-                        </div>-->
+                        <!--                        <div class="footer-signup">
+                                                    <span class="sign"><a href="signup.jsp"> Sign up </a></span>
+                                                </div>-->
                         <div class="footer-psw">
                             <span class="psw"><a href="forgotpwd">Forgot password?</a></span>
                         </div>

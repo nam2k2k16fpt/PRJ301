@@ -1,15 +1,7 @@
 
-body{
-    background: url(image/cooking-kitchen-appliance-utensils.jpg);
-    background-size: cover;
-    background-position-y: -110px;
-    font-family: "Inter", sans-serif;
-    
-}
-
 .contrainer{
     width: 454.4px;
-    height: 580px;
+    height: 350px;
     box-shadow: 0 0 3px 0 rgba(0,0, 0, 0.3);
     background: #fff;
     border-radius: 3px;
@@ -21,7 +13,7 @@ body{
 
 .login-header > p {
     color: darkgray;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .form-item{
@@ -52,17 +44,10 @@ button{
     cursor: pointer;
 }
 
-
-
 a{
     text-decoration: none;
 }
 
-
-footer {
-    font-size: 15px;
-    color: darkgray;
-}
 
 
 

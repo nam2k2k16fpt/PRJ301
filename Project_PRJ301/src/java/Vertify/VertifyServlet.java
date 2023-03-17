@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package Vertify;
 
 import java.io.IOException;
@@ -18,50 +17,25 @@ import jakarta.servlet.http.HttpSession;
  * @author Admin
  */
 public class VertifyServlet extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet VertifyServlet</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet VertifyServlet at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    } 
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        request.getRequestDispatcher("view/vertify.jsp").forward(request, response);
-    } 
-
-
+            throws ServletException, IOException {
+        request.getRequestDispatcher("weblogin/vertify.jsp").forward(request, response);
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         String code = request.getParameter("code");
-        
-        if(code.equals("123456")){
-            response.sendRedirect("login");
-        }else{
-            HttpSession session = request.getSession();
-            session.setAttribute("enzo", "sorry it not equal vertify");
-            response.sendRedirect("vertifycode");
+        HttpSession session = request.getSession();
+
+        String vertify = (String) session.getAttribute("vertify");
+
+        if (vertify != null && code.equals(vertify)) {
+                response.sendRedirect("newpassword");
+        } else {
+            request.setAttribute("error3", "sorry it not exist vertify");
+            request.getRequestDispatcher("weblogin/vertify.jsp").forward(request, response);
         }
     }
 

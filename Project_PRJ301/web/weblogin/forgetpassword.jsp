@@ -1,6 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,12 +12,19 @@
         <link href="weblogin/css/style_forgotpassword.css" rel="stylesheet" >
 
         <style>
-            input[type=text] {
+            input[type=email] {
                 width: 90%;
                 padding: 15px;
                 margin: 10px 0 ;
                 border: 1px solid wheat;
                 outline:none;
+            }
+
+            h5{
+                text-align: center;
+                width: 90%;
+                height: 10px;
+                color: red;
             }
         </style>
     </head>
@@ -24,8 +32,11 @@
     <body>
         <div class="contrainer">
             <h1>Forgot Password</h1>
+            <c:if test="${not empty error2}">
+                <h5>${error2}</h5>
+            </c:if>
             <form action="forgotpwd" method="post" >
-                <input type="text"  placeholder="Enter valid username" name="ufname">
+                <input type="email"  placeholder="abc@gmail.com" name="gmail" value="${user.email}" required>
                 <button type="submit">Submit </button>
             </form>
             <footer>

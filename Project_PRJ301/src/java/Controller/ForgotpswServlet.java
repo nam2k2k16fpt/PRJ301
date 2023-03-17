@@ -4,8 +4,9 @@
  */
 package Controller;
 
-import Dal.AccountDao;
-import Model.Account;
+import Dal.UsersDao;
+import Model.Users;
+import Vertify.SendMail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,58 +21,42 @@ import jakarta.servlet.http.HttpSession;
  */
 public class ForgotpswServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ForgotpswServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ForgotpswServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("view/forgetpassword.jsp").forward(request, response);
+        request.getRequestDispatcher("weblogin/forgetpassword.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String uname = request.getParameter("ufname");
+        String ugmail = request.getParameter("gmail");
         HttpSession session = request.getSession();
-        if (uname == null) {
-            response.sendRedirect("forgotpwd");
-        } else {
-            AccountDao adb = new AccountDao();
-            Account a = adb.getByUsername(uname);
-            if (a != null) {
-                session.setAttribute("cfaccount", a);
-                response.sendRedirect("vertifycode");
+        
+        UsersDao udb = new UsersDao();
+        Users u = udb.getByCheckGmail(ugmail);
+        
+       
+        if (u != null) {
+            //set code sau khi send to email
+            session.setAttribute("vertify",CheckEmail(ugmail));
+            session.setAttribute("user", u);
+            response.sendRedirect("vertifycode");
 
-            } else {
-                session.setAttribute("error", "Not exist username");
-                request.getRequestDispatcher("view/forgetpassword.jsp").forward(request, response);
-            }
+        } else {
+            request.setAttribute("error2", "This email address does not exist!");
+            request.getRequestDispatcher("weblogin/forgetpassword.jsp").forward(request, response);
         }
 
+    }
+    
+    //xu ly send email
+    public String CheckEmail(String email){
+        SendMail s = new SendMail();
+        String radomcode = s.createCaptcha();
+        s.sentEmail(email, "Vertity Code Now: ", radomcode);
+        return radomcode;
     }
 
     @Override

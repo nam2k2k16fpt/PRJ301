@@ -25,12 +25,20 @@
     <body>
         <div class="contrainer">
             <h1>Confirm Vertify:</h1>
-            <h6>${enzo}</h6>
+            <%
+                String str = (String) session.getAttribute("vertify"); 
+                if( str != null){
+            %>
+            <span style="color: greenyellow">We already send a verification code to your email</span>
+
+            <% } %>
             <form action="vertifycode" method="post" >
                 <input type="text" name="code" placeholder="Enter code">
+                <h6>${enzo}</h6>
                 <button type="submit">Confirm </button>
+
             </form>
-            
+
         </div>
     </body>
 </html>
