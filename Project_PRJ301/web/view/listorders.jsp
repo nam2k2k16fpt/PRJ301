@@ -1,35 +1,63 @@
-<%-- 
-    Document   : addproduct
-    Created on : 08-Mar-2023, 03:33:32
-    Author     : Admin
---%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="Model.Customer"%>
+<%@page import="Model.Order"%>
+<%@page import="Dal.CustomerDao"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Add product</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="icon/dd.png" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="view/css/styles.css" rel="stylesheet" >
-    <link href="view/css/styledashboard.css" rel="stylesheet">
-    <link href="view/css/styleproduct.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/fe000f9b2a.js" crossorigin="anonymous"></script>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="icon/dd.png" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="view/css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="view/css/styledashboard.css">
+        <script src="https://kit.fontawesome.com/fe000f9b2a.js" crossorigin="anonymous"></script>
+        <style>
+            .container > .row{
+                background-color: whitesmoke;
+                border: 1px solid rgba(228, 198, 181, 0.235);
+                padding: 10px 10px 10px 10px;
+            }
+
+            i {
+                font-size: 20px;
+            }
+            
+              .pagination a.active {
+                background-color: #777;
+                color: white;
+            }
+            .pagination a:hover:not(.active) {
+                background-color: #fff;
+            }
+            .pagination {
+                display: inline-block;
+            }
+            .pagination a {
+                color: black;
+                font-size: 22px;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+
+        </style>
 
 
-</head>
+    </head>
 
-<body style="background-color: floralwhite;">
-            <div class="d-flex" id="wrapper">
+    <body style="background-color: floralwhite;">
+        <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
-            <div class="border-end bg-light" id="sidebar-wrapper">
+             <div class="border-end bg-light" id="sidebar-wrapper">
                 <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp; Dashboard</a>
@@ -100,67 +128,61 @@
                         </div>
                     </div>
                 </nav>
-            <!-- Page content-->
-            <div class="container mt-4">
-                <div class="row">
-                    <div class="col-lg-6 ">
-                        <h4>Supplier Add</h4>
-                        <h6>Create new supplier</h6>
-                    </div>
-
-                    <hr>
-                </div>
-                <form action="addsupplier" method="post">
-                <div class="row">
-                    
-                    <div class="col-lg-3">
-                        <label for="">SupplierId:</label> <br>
-                        <input type="text" name="sid" placeholder="sup_name" required>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="">SupplierName:</label> <br>
-                        <input type="text" name="sname"  required>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="">Address: </label> <br>
-                        <input type="text" name="saddress"  value="" required>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="">Phone:</label> <br>
-                        <input type="text" placeholder="8888888888" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" maxlength="10"  title="Ten digits code" name="sphone" required>
-                    </div>
-                    <div class="col-lg-3 mt-4">
-                        <label for="">City: </label> <br>
-                        <input type="text" name="scity" placeholder="Ha Noi"  required>
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 mt-4">
-                        <button type="submit" class="btn btn-success">Add</button>
-                        <button type="reset" class="btn btn-danger">Cancel</button>
-
-                    </div>
-                </div>
                 
-                </form>
-                <div class="col-lg-8 mt-4">
-                    <h6 style="color: red">${error}</h6>
+                <!-- content -->
+                <div class="container mt-3">
+                    <%
+                     CustomerDao cdb = new CustomerDao();  
+                     List<Order> list = (List<Order>) request.getAttribute("listorder");
+                     if(list != null){
+                     for(Order i: list){ 
+                    %>
+                        <div class="row mb-2">
+                            <div class="col-lg-1 mt-2">
+                                <span><%= i.getOrderid()%></span>
+                            </div>
+                           <%  String cusid = i.getCustomerid();
+                               Customer c = cdb.getByCheckIdCustomer(cusid); %>
+                            <div class="col-lg-4" >
+                                <span>CustomerId: <%=i.getCustomerid()%></span> <br>
+                                <span>Email: <%=c.getEmail()%></span>
+
+                            </div>
+                            <div class="col-lg-3" >
+                                <span>Phone: <%= c.getPhonenumber()%></span> <br>
+                                <span>Address: <%= c.getAddress()%></span>
+                            </div>
+                            <div class="col-lg-3" >
+                                <span>Date: <%=i.getOrderdate()%></span> <br>
+                                <span>Total: <%=i.getTotal()%></span>
+                            </div>
+                            <div class="col-lg-1 mt-2 text-end">
+                                <a href="orderdetail?orderid=<%=i.getOrderid()%>&orderdate=<%=i.getOrderdate()%>"><i class="fa-solid fa-circle-info"></i></a>
+                            </div>
+                        </div>
+                            <%
+                                }}%>
                 </div>
+
+                <!-- paging -->
+                 <div class="row">
+                        <center>
+
+                            <c:set var="page" value="${requestScope.page}"/>
+                            <div class="pagination">
+                                <c:forEach begin="${1}" end="${requestScope.num}" var="i">
+                                    <a href="orderlist?page=${i}" class="${i==page?"active":""}">${i}</a>
+                                </c:forEach>
+                            </div>
+                        </center>
+
+                    </div>
 
             </div>
-
-
-
-
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="view/js/scripts.js"></script>
-        
-        
-</body>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="view/js/scripts.js"></script>
+    </body>
 
 </html>

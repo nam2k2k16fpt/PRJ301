@@ -42,9 +42,10 @@ public class DisplayServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String key = request.getParameter("key");
         ProductDao pdb = new ProductDao();
         CategoryDao cdb = new CategoryDao();
-        List<Product> list1 = pdb.getAll();
+        List<Product> list1 = pdb.getAll(key);
         List<Category> listcat = cdb.getAll();
         
 

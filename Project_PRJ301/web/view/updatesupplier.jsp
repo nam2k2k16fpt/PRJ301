@@ -29,78 +29,77 @@
 <body style="background-color: floralwhite;">
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
-        <div class="border-end bg-light" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo
-            </div>
-            <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp;
-                    Dashboard</a>
-                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
-                    <button class="dropbtn">Product</button>
-                    <div class="dropdown-content">
-                         <a href="lps">Product List</a>
+            <div class="border-end bg-light" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp; Dashboard</a>
+                    <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                        <button class="dropbtn">Product</button>
+                        <div class="dropdown-content">
+                            <a href="lps">Product List</a>
                             <a href="adps">Add Product</a>
                             <a href="lcs">Category List</a>
                             <a href="acs">Add Category</a>
+                        </div>
                     </div>
-                </div>
 
-                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
-                    <button class="dropbtn">Orders</button>
-                    <div class="dropdown-content">
-                        <a href="#">Order List</a>
-                        <a href="#">Add Order</a>
+                    <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                        <button class="dropbtn">Orders</button>
+                        <div class="dropdown-content">
+                            <a href="orderlist">Order List</a>
+                        </div>
                     </div>
-                </div>
-                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
-                    <button class="dropbtn">People</button>
-                    <div class="dropdown-content">
-                        <a href="#">Customer List</a>
-                        <a href="#"> Add Customer</a>
-                        <a href="#">Supplier List</a>
-                        <a href="#">Add Supplier</a>
+                    <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                        <button class="dropbtn">People</button>
+                        <div class="dropdown-content">
+                            <a href="listcustomer">Customer List</a>
+                            <a href="addcustomer"> Add Customer</a>
+                            <a href="listsupplier">Supplier List</a>
+                            <a href="addsupplier">Add Supplier</a>
 
+                        </div>
+                    </div>     
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> &nbsp; Charts</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Account</a>
+                    <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
+                        <button class="dropbtn">Users</button>
+                        <div class="dropdown-content">
+                            <a href="#">New User</a>
+                            <a href="#">Users List</a>
+                        </div>
                     </div>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Sign Out</a>
                 </div>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> &nbsp; Charts</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Account</a>
-                <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
-                    <button class="dropbtn">Users</button>
-                    <div class="dropdown-content">
-                        <a href="account.html">New User</a>
-                        <a href="#">Users List</a>
-                    </div>
-                </div>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Sign
-                    Out</a>
             </div>
-        </div>
-        <!-- Page content wrapper-->
-        <div id="page-content-wrapper">
-            <!-- Top navigation-->
-            <nav class="navbar navbar-expand-lg navbar-subtle bg-light border-bottom">
-                <div class="container-fluid">
-                    <button class="btn btn-primary" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span
-                            class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item active"><a class="nav-link" href="index1.html">Home</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#!">Sign out</a>
-                                    <a class="dropdown-item" href="#!">Account</a>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-subtle bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation"><span
+                                class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item active"><a class="nav-link" href="main">Home</a></li>
+                                <li class="nav-item dropdown">
+                                    
+                                       <c:if test="${not empty account}">
+                                           <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, &nbsp; ${sessionScope.account.displayname}</a>   
+                                       </c:if>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="signout">Sign out</a>
+                                        <a class="dropdown-item" href="#!">Account</a>
 
-                                </div>
-                            </li>
-                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
             <!-- Page content-->
             <div class="container mt-4">
                 <div class="row">

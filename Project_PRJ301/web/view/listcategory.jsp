@@ -67,11 +67,9 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-light" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo
-                </div>
+                <div class="sidebar-heading border-bottom bg-light"> <i class="fa-brands fa-docker"></i> Hourseware GoGo</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp;
-                        Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="dashbsr"> &nbsp; Dashboard</a>
                     <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
                         <button class="dropbtn">Product</button>
                         <div class="dropdown-content">
@@ -85,20 +83,19 @@
                     <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
                         <button class="dropbtn">Orders</button>
                         <div class="dropdown-content">
-                            <a href="#">Order List</a>
-                            <a href="#">Add Order</a>
+                            <a href="orderlist">Order List</a>
                         </div>
                     </div>
                     <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
                         <button class="dropbtn">People</button>
                         <div class="dropdown-content">
-                            <a href="#">Customer List</a>
-                            <a href="#"> Add Customer</a>
-                            <a href="#">Supplier List</a>
-                            <a href="#">Add Supplier</a>
+                            <a href="listcustomer">Customer List</a>
+                            <a href="addcustomer"> Add Customer</a>
+                            <a href="listsupplier">Supplier List</a>
+                            <a href="addsupplier">Add Supplier</a>
 
                         </div>
-                    </div>
+                    </div>     
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!"> &nbsp; Charts</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Account</a>
                     <div class="dropdown list-group-item list-group-item-action list-group-item-light p-3">
@@ -108,8 +105,7 @@
                             <a href="#">Users List</a>
                         </div>
                     </div>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Sign
-                        Out</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">&nbsp; Sign Out</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -126,10 +122,13 @@
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                                 <li class="nav-item active"><a class="nav-link" href="main">Home</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                                    
+                                       <c:if test="${not empty account}">
+                                           <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello, &nbsp; ${sessionScope.account.displayname}</a>   
+                                       </c:if>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Sign out</a>
+                                        <a class="dropdown-item" href="signout">Sign out</a>
                                         <a class="dropdown-item" href="#!">Account</a>
 
                                     </div>

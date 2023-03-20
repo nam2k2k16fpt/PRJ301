@@ -1,6 +1,7 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 public class Customer {

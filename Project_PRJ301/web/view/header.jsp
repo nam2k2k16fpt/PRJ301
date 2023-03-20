@@ -34,6 +34,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
@@ -74,9 +75,24 @@
                             </li>
 
                         </ul>
-                                <form action="login" method="get">
-                                    <button type="submit" value="Login" class="btn btn-success">Login</button>
-                        </form>
+                        <c:if test="${empty account}">
+                            <form action="login" method="get">
+                                <button type="submit" value="Login" class="btn btn-success">Login</button>
+                            </form>
+                        </c:if>
+                        <c:if test="${not empty account}">
+                            <div class="btn-group danger">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Hello, &nbsp; ${sessionScope.account.displayname}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="signout">Sign out</a></li>
+                                </ul>
+                            </div>
+                        </c:if>
+
+
+
                     </div>
                 </div>
             </nav>
@@ -89,12 +105,15 @@
                     </div>
                     <!--xu ly search-->
                     <div class="col-lg-11">
-                        <div class="input-group mt-2">
-                            <input type="text" class="form-control" placeholder="Searching"
+                        <form action="main" method="GET">
+                             <div class="input-group mt-2">
+                                 <input type="text" class="form-control" placeholder="Searching" name="key" value="${param.key}"
                                    aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button type="button" class="btn btn-primary btn-lg"><i
+                            <button type="submit" class="btn btn-primary btn-lg"><i
                                     class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
+                        </form>
+                       
                     </div>
                 </div>
             </div>
